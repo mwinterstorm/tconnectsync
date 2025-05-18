@@ -25,13 +25,13 @@ logger = logging.getLogger(__name__)
 
 class TandemSourceApi:
     LOGIN_PAGE_URL = 'https://sso.tandemdiabetes.com/'
-    LOGIN_API_URL = 'https://tdcservices.tandemdiabetes.com/accounts/api/login'
+    LOGIN_API_URL = 'https://tdcservices.eu.tandemdiabetes.com/accounts/api/login'
     TDC_AUTH_CALLBACK_URL = 'https://sso.tandemdiabetes.com/auth/callback'
-    TDC_OAUTH_AUTHORIZE_URL = 'https://tdcservices.tandemdiabetes.com/accounts/api/oauth2/v1/authorize'
-    TDC_OIDC_JWKS_URL = 'https://tdcservices.tandemdiabetes.com/accounts/api/.well-known/openid-configuration/jwks'
-    TDC_OIDC_ISSUER = 'https://tdcservices.tandemdiabetes.com/accounts/api' # openid_config['issuer']
-    TDC_OIDC_CLIENT_ID = '0oa27ho9tpZE9Arjy4h7'
-    SOURCE_URL = 'https://source.tandemdiabetes.com/'
+    TDC_OAUTH_AUTHORIZE_URL = 'https://tdcservices.eu.tandemdiabetes.com/accounts/api/oauth2/v1/authorize'
+    TDC_OIDC_JWKS_URL = 'https://tdcservices.eu.tandemdiabetes.com/accounts/api/.well-known/openid-configuration/jwks'
+    TDC_OIDC_ISSUER = 'https://tdcservices.eu.tandemdiabetes.com/accounts/api' # openid_config['issuer']
+    TDC_OIDC_CLIENT_ID = '1519e414-eeec-492e-8c5e-97bea4815a10'
+    SOURCE_URL = 'https://source.eu.tandemdiabetes.com/'
 
 
     def __init__(self, email, password):
@@ -73,7 +73,7 @@ class TandemSourceApi:
             redirect_uri = 'https://sso.tandemdiabetes.com/auth/callback' # must be an allowlisted URI
             scope = 'openid profile email'
 
-            token_endpoint = 'https://tdcservices.tandemdiabetes.com/accounts/api/connect/token' #openid_config['token_endpoint']
+            token_endpoint = 'https://tdcservices.eu.tandemdiabetes.com/accounts/api/connect/token' #openid_config['token_endpoint']
 
 
             def generate_code_verifier():
@@ -91,7 +91,7 @@ class TandemSourceApi:
             code_verifier = generate_code_verifier()
             code_challenge = generate_code_challenge(code_verifier)
 
-            authorization_endpoint = 'https://tdcservices.tandemdiabetes.com/accounts/api/connect/authorize' #openid_config['authorization_endpoint']
+            authorization_endpoint = 'https://tdcservices.eu.tandemdiabetes.com/accounts/api/connect/authorize' #openid_config['authorization_endpoint']
 
             oidc_step1_params = {
                 'client_id': client_id,
